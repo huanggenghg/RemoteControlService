@@ -19,7 +19,7 @@ public class RemoteControlController {
         long appId = 678281271L;    // 由即构提供
         String secretKey = "5ea6a10f0fbbab92bc786fcfa2fd9d45";  // 由即构提供
         String userId = userInfo.getUserId();    // 用户 ID，同一 appId 下全网唯一
-        int effectiveTimeInSeconds = 60;   // 有效时间，单位：秒
+        int effectiveTimeInSeconds = 600;   // 有效时间，单位：秒, token 有效期10分钟
 
         String payload = "{\"room_id\":\"" + userInfo.getLoginRoomId() + "\"}"; // 填入自定义的payload值，如room_id。 非必输，不传则payload赋值null。
         System.out.println("token: userId = " + userId);
