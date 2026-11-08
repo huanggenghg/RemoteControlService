@@ -118,7 +118,7 @@ public class TokenServerAssistant {
 
         @Override
         public String toString() {
-            return "TokenInfo {\"error\": " + error + ", \"data\": \"" + data + "\"}";
+            return "TokenInfo {error=" + error.code + ", data=<redacted>}";
         }
     }
 
@@ -180,9 +180,6 @@ public class TokenServerAssistant {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Object> map = new HashMap<>();
-        map.put("id", "1");
-        map.put("name", "亚瑟");
-        map.put("age", 33);
         map.put("app_id", appId);
         map.put("user_id", userId);
         long nowTime = System.currentTimeMillis() / 1000;
@@ -202,7 +199,6 @@ public class TokenServerAssistant {
             return token;
         }
 
-        System.out.println("current nonce: " + nonce);
 
         try {
             debugInfo("encrypt content ...");

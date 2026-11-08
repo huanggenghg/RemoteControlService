@@ -1,0 +1,23 @@
+[Unit]
+Description=RemoteControl ZEGO token service
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+WorkingDirectory=/opt/remotecontrol-token/current
+EnvironmentFile=/etc/remotecontrol-token.env
+ExecStart=/usr/bin/java -Xms32m -Xmx192m -Dloader.main=com.lumostech.remotecontrol.token.TokenServiceApplication -cp /opt/remotecontrol-token/current/app.jar org.springframework.boot.loader.launch.PropertiesLauncher --server.address=127.0.0.1 --server.port=8088
+Restart=on-failure
+RestartSec=3
+SuccessExitStatus=143
+TimeoutStopSec=20
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+MemoryMax=384M
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
